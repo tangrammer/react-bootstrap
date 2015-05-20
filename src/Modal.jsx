@@ -22,7 +22,9 @@ var Modal = React.createClass({
     keyboard: React.PropTypes.bool,
     closeButton: React.PropTypes.bool,
     animation: React.PropTypes.bool,
-    onRequestHide: React.PropTypes.func.isRequired
+      onRequestHide: React.PropTypes.func.isRequired,
+      dialogClassName: React.PropTypes.string
+
   },
 
   getDefaultProps: function () {
@@ -57,7 +59,7 @@ var Modal = React.createClass({
         className={joinClasses(this.props.className, classSet(classes))}
         onClick={this.props.backdrop === true ? this.handleBackdropClick : null}
         ref="modal">
-        <div className={classSet(dialogClasses)}>
+        <div className={classSet(this.props.dialogClassName, dialogClasses)}>
           <div className="modal-content" style={{overflow: 'hidden'}}>
             {this.props.title ? this.renderHeader() : null}
             {this.props.children}
